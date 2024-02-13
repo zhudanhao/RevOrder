@@ -1,0 +1,35 @@
+# V0.2
+CUDA_VISIBLE_DEVICES=0,1,2,3 accelerate launch --multi_gpu --num_processes 4 --main_process_port 1234 final.py \
+    --model_name_or_path ./output/final/checkpoint-9000/ \ #../teach_llm_cal/TinyLlama-1.1B-intermediate-step-1195k-token-2.5T/\
+    --output_dir ./output/final/ \
+    --logging_steps 10 \
+    --save_strategy steps \
+    --save_steps  500 \
+    --data_seed 42 \
+    --save_total_limit 6 \
+    --evaluation_strategy no \
+    --eval_dataset_size 0 \
+    --max_eval_samples 0 \
+    --per_device_eval_batch_size 1 \
+    --max_new_tokens 1024 \
+    --dataloader_num_workers 4 \
+    --group_by_length=False \
+    --logging_strategy steps \
+    --remove_unused_columns False \
+    --do_train \
+    --warmup_ratio 0.05 \
+    --lr_scheduler_type constant \
+    --dataset ../teach_llm_cal/TinyLlama/oasst_top1_2023-08-25/ \
+    --dataset_format oasst1 \
+    --source_max_len 512 \
+    --target_max_len 512 \
+    --per_device_train_batch_size 128 \
+    --max_steps 0 \
+    --num_train_epochs 2 \
+    --learning_rate 1e-5 \
+    --adam_beta2 0.999 \
+    --max_grad_norm 1.0 \
+    --weight_decay 0.0 \
+    --seed 0 \
+    --trust_remote_code \
+    #--report_to wandb 
