@@ -10,10 +10,32 @@ https://arxiv.org/abs/2402.03822
 
 ## dependencies
 python=3.10.6
+
 torch=2.1.1+cu121
+
 transformers=4.36.3.dev0
 
+accelerate=0.26.1
+
 ## Train the model
-###
+### clone TinyLLama
+git clone https://github.com/jzhang38/TinyLlama
 
+### download their pretrained checkpoints
+git clone https://huggingface.co/TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T
 
+Note: Whether to use the pretrained model does not affect the results.  You can also choose to initialize the model randomly.
+
+### training for 2 epochs with lr=1e-4 and save the checkpoint
+
+change the corresponding settings in final.sh
+
+sh final.sh
+
+### training for 1 epochs with lr=1e-5 with the previous checkpoint
+change the corresponding settings in final.sh
+
+sh final.sh
+
+## evaluate
+open evauate.ipynb, and run step by step
