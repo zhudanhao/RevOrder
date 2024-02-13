@@ -39,3 +39,9 @@ sh final.sh
 
 ## evaluate
 open evauate.ipynb, and run step by step
+
+
+## some notes
+### The instructions above should guide you to reproduce our results exactly. Feel free to contact me with any questions,  Danhao Zhu, 229369897@qq.com
+### Simply use a initial lr=1e-4, and a linear of cosin lr schedule can also reproduce our results. The instructions in this document have to be consistent with our paper, but is not neccessary.
+### Indeed, we have found, with a much less training data (maybe 1/5-10/1) than our paper, and much less training steps, RevOrder can also achieve the perfect results on arithmetic problems. Just tune the lr~ But since this paper is underr review, we do not update our paper and  the code.
