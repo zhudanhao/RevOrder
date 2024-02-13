@@ -1,4 +1,3 @@
-#乘除、加减对偶的算式生成，结果只能是整数
 import random
 import operator
 import json
@@ -81,14 +80,14 @@ def expand_mul_equation(left):
     num1,num2 = int(num1),int(num2)
     num2_str = str(num2)
 
-    # 用于存储每一步的结果
+   
     results = []
     for i, digit in enumerate(num2_str):
-        # 计算每一项的结果
+        
         result = num1 * int(digit) * (10 ** (len(num2_str)-1-i))
         results.append(result)
 
-    # 生成加法表示的表达式
+    
     equation = f"{num1}*{num2}=" + "+".join(f"*{int(digit)*(10**(len(num2_str)-1-i))}" for i, digit in enumerate(num2_str)) + \
                "=" + "+".join(str(result) for result in results) + \
               "=" + str(sum(results[:2])) + "+" + str(sum(results[2:])) + \
@@ -99,19 +98,19 @@ def expand_mul_equation(left):
 def expand_mul_equation(left):
     num1,num2 = left.split('*')
     a,b = int(num1),int(num2)
-    # 将乘数 b 分解为其各个位的值，且顺序是从高位到低位
+    
     b_digits = [int(digit) for digit in str(b)]
 
-    # 计算每个位上的乘积
+    
     partial_products = [a * (digit * (10 ** (len(b_digits) - i - 1))) for i, digit in enumerate(b_digits) if digit != 0]
 
-    # 构建初始乘法表达式
+    
     expression = f"{a}*{b}=" + "+".join([f"{a}*{digit * (10 ** (len(b_digits) - i - 1))}" for i, digit in enumerate(b_digits) if digit != 0])
 
-    # 将乘法转换为加法
+    
     expression += "=" + "+".join(map(str, partial_products))
 
-    # 合并加法表达式
+   
     while len(partial_products) > 1:
         new_partial_products = []
         for i in range(0, len(partial_products), 2):
@@ -157,20 +156,20 @@ def generate_div(n_digits, num_eq,digits2=None):
     equations = []
 
     for _ in range(num_eq):
-        # 随机生成除数 b 的位数（至少1位，至多 n_digits-1 位）
+        
         if digits2 == None:
             b_digits = random.randint(1, n_digits - 1)
         else:
             b_digits = digits2
 
-        # 随机生成商 c 的位数，以确保 a 的位数为 n_digits
+        
         c_digits = n_digits - b_digits
 
-        # 随机生成 b 和 c
+        
         b = random.randint(10**(b_digits - 1), 10**b_digits - 1)
         c = random.randint(10**(c_digits - 1), 10**c_digits - 1)
 
-        # 计算 a
+       
         a = b * c
 
         equations.append(f"{a}/{b}={c}")
