@@ -26,22 +26,22 @@ git clone https://huggingface.co/TinyLlama/TinyLlama-1.1B-intermediate-step-1431
 
 Note: Whether to use the pretrained model does not affect the results.  You can also choose to initialize the model randomly.
 
-### training for 2 epochs with lr=1e-4 and save the checkpoint
+### Train for 2 epochs with lr=1e-4 and save the checkpoint
 
-change the corresponding settings in final.sh
+Change the corresponding settings in final.sh.
 
 sh final.sh
 
-### training for 1 epochs with lr=1e-5 with the previous checkpoint
-change the corresponding settings in final.sh
+### Train for 1 epoch with lr=1e-5 on the previous checkpoint
+change the corresponding settings in final.sh.
 
 sh final.sh
 
 ## evaluate
-open evauate.ipynb, and run step by step
+open evauate.ipynb, and run step by step.
 
 
 ## some notes
 ### The instructions above should guide you to reproduce our results exactly. Feel free to contact me with any questions,  Danhao Zhu, 229369897@qq.com
-### Simply use a initial lr=1e-4, and a linear of cosin lr schedule can also reproduce our results. The instructions in this document have to be consistent with our paper, but is not neccessary.
-### Indeed, we have found, with a much less training data (maybe 1/5-10/1) than our paper, and much less training steps, RevOrder can also achieve the perfect results on arithmetic problems. Just tune the lr~ But since this paper is underr review, we do not update our paper and  the code.
+### Simply use an initial lr=1e-4, and a linear or cosin lr schedule can also reproduce our results. The instructions in this document have to be consistent with our paper. But the complication is not neccessary in practice.
+### Indeed, we have found, with a much less training data (maybe 1/5-10/1) than our paper, and much less training steps, RevOrder can also achieve the perfect results on arithmetic problems. Just tune the lr~ But since this paper is underr review, we do not update our paper and the code.
